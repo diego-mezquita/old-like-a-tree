@@ -1,6 +1,6 @@
 <template>
     <ul>
-        <li v-for="data in $options.monumentaalGroenDatya.features" v-bind:key="data.id" class="data-item">{{data}}</li>
+        <li v-for="data in $options.monumentaalGroenData.features" v-bind:key="data.id" class="data-item">{{data}}</li>
     </ul>
 </template>
 
