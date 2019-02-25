@@ -1,7 +1,7 @@
 <template>
     <div id="app">
         <img alt="Vue logo" src="./assets/images/logo.png">
-        <HelloWorld msg="Welcome to Your Vue.js App"/>
+        <GoogleMap name="example"></GoogleMap>
         <ShowAllWandkustData></ShowAllWandkustData>
     </div>
 </template>
@@ -9,12 +9,14 @@
 <script>
     import HelloWorld from './components/HelloWorld.vue'
     import ShowAllWandkustData from './components/ShowAllWandkustData.vue'
+    import GoogleMap from './components/GoogleMap.vue'
 
     export default {
         name: 'app',
         components: {
             HelloWorld,
-            ShowAllWandkustData
+            ShowAllWandkustData,
+            GoogleMap
         }
     }
 </script>
