@@ -2,20 +2,18 @@
     <div id="app">
         <img alt="Vue logo" src="./assets/images/logo.png">
         <GoogleMap name="example"></GoogleMap>
-        <ShowAllWandkustData></ShowAllWandkustData>
+        <ShowAllMonumentaalGroenData></ShowAllMonumentaalGroenData>
     </div>
 </template>
 
 <script>
-    import HelloWorld from './components/HelloWorld.vue'
-    import ShowAllWandkustData from './components/ShowAllWandkustData.vue'
+    import ShowAllMonumentaalGroenData from './components/ShowAllMonumentaalGroenData.vue'
     import GoogleMap from './components/GoogleMap.vue'
 
     export default {
         name: 'app',
         components: {
-            HelloWorld,
-            ShowAllWandkustData,
+            ShowAllMonumentaalGroenData,
             GoogleMap
         }
     }
