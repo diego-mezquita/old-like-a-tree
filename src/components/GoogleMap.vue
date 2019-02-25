@@ -36,7 +36,7 @@
             initMap() {
                 const element = document.getElementById(this.mapName);
                 const options = {
-                    zoom: 14,
+                    zoom: 12,
                     center: new google.maps.LatLng(52.370216, 4.895168)
                 };
                 this.map = new google.maps.Map(element, options);
@@ -64,8 +64,9 @@
 
 <style scoped>
     .google-map {
-        width: 800px;
-        height: 600px;
+        width: 100vw;
+        max-width: 1000px;
+        height: 80vh;
         margin: 0 auto;
         background: gray;
     }
