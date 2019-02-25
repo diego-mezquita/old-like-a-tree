@@ -7,7 +7,7 @@
 </template>
 
 <script>
-    import WANDKUST_JSON from '../assets/data/wandkust.json';
+    import MONUMEMNTAAL_GROEN_JSON from '../assets/data/monumentaal-groen.json'
 
     export default {
         name: 'google-map',
@@ -23,7 +23,7 @@
             script.src = 'https://maps.googleapis.com/maps/api/js?key=XXX';
             document.body.appendChild(script);
 
-            this.data = WANDKUST_JSON.features;
+            this.data = MONUMEMNTAAL_GROEN_JSON.features;
         },
         methods: {
             toggleMapVisibility() {
@@ -50,8 +50,9 @@
 
                     const mapSettings = {
                         position: new google.maps.LatLng(lat, lng),
-                        map: this.map
-                    }
+                        map: this.map,
+                        title: location.properties.Naam
+                    };
 
                     const marker = new google.maps.Marker(mapSettings);
                 });
