@@ -55,6 +55,14 @@
                     };
 
                     const marker = new google.maps.Marker(mapSettings);
+
+                    const infoWindowTemplate = `<div><h3>{{location.properties.Naam}}</h3></div>`;
+
+                    const infoWindow = new google.maps.InfoWindow({content: infoWindowTemplate});
+
+                    marker.addListener('click', function() {
+                        infoWindow.open(this.map, marker);
+                    });
                 });
             }
 
