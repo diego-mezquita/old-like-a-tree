@@ -20,7 +20,7 @@
         },
         created() {
             let script = document.createElement('script');
-            script.src = 'https://maps.googleapis.com/maps/api/js?key=XXX';
+            script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB1JByjXXnbrGvZYMYoIrPEXlk0qvdjUhM';
             document.body.appendChild(script);
 
             this.data = MONUMEMNTAAL_GROEN_JSON.features;
@@ -56,13 +56,13 @@
 
                     const marker = new google.maps.Marker(mapSettings);
 
-                    const infoWindowTemplate = `<div><h3>{{location.properties.Naam}}</h3></div>`;
-
-                    const infoWindow = new google.maps.InfoWindow({content: infoWindowTemplate});
-
-                    marker.addListener('click', function() {
-                        infoWindow.open(this.map, marker);
-                    });
+                    // const infoWindowTemplate = `<div><h3>location.properties.Naam</h3></div>`;
+                    //
+                    // const infoWindow = new google.maps.InfoWindow({content: infoWindowTemplate});
+                    //
+                    // marker.addListener('click', function() {
+                    //     infoWindow.open(this.map, marker);
+                    // });
                 });
             }
 
