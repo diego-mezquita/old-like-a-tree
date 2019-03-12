@@ -20,7 +20,7 @@
         },
         created() {
             let script = document.createElement('script');
-            script.src = 'https://maps.googleapis.com/maps/api/js?key=XXX';
+            script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB1JByjXXnbrGvZYMYoIrPEXlk0qvdjUhM';
             document.body.appendChild(script);
 
             this.data = WANDKUST_JSON.features;
