@@ -1,7 +1,7 @@
 <template>
     <div class="google-map-wrapper">
         <div class="map-buttons">
-            <button v-on:click="this.toggleMapVisibility" v-show="!this.showTressButtonVisible">Show Map</button>
+            <button v-on:click="this.showMap" v-show="!this.showTressButtonVisible">Show Map</button>
             <button v-on:click="this.showMarkers"
                     v-show="this.showTressButtonVisible"
                     class="map-button">Show Trees
@@ -28,30 +28,38 @@
         },
         created() {
             let script = document.createElement('script');
+
             script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB1JByjXXnbrGvZYMYoIrPEXlk0qvdjUhM';
+            script.async = true;
+            script.defer = true;
             document.body.appendChild(script);
 
             this.data = WANDKUST_JSON.features;
         },
         methods: {
-            toggleMapVisibility() {
-                this.mapVisible = !this.mapVisible;
-
+            showMap() {
                 if (!this.map) {
+                    // UX IMPROVEMENT
+                    // add spinner?loader? anything that lets the user know the system is waiting
+                    // for a response/computing/etc
                     this.initMap();
                 }
 
+                this.mapVisible = true;
                 this.showTressButtonVisible = true;
             },
             initMap() {
-                const element = document.getElementById(this.mapName);
-                const options = {
-                    zoom: 12,
-                    center: new google.maps.LatLng(52.370216, 4.895168)
-                };
-                this.map = new google.maps.Map(element, options);
+                if (false) {
+                    setTimeout(this.initMap, 500);
+                } else {
+                    const element = document.getElementById(this.mapName);
+                    const options = {
+                        zoom: 12,
+                        center: new google.maps.LatLng(52.370216, 4.895168)
+                    };
 
-                this.mapVisible = true;
+                    this.map = new google.maps.Map(element, options);
+                }
             },
             showMarkers() {
                 this.data.forEach(location => {
