@@ -1,11 +1,12 @@
 <template>
-    <ul class="ui sidebar inverted vertical menu list">
-        <li v-for="data in $options.monumentaalGroenData.features" v-bind:key="data.id" class="item">
-            <!--<a href="" class="item"></a>-->
-            <img class="ui avatar image" src="../assets/images/monument.svg">
-            <div class="content">
-                <p class="header">{{data.properties.Naam}}</p>
-                <p class="meta">{{data.properties.Status}}</p>
+    <ul class="list">
+        <li v-for="data in $options.monumentaalGroenData.features" v-bind:key="data.id" class="list-item">
+            <div class="list-item-info-wrapper">
+                <i class="material-icons list-item-image">account_balance</i>
+                <div class="list-item-info">
+                    <p class="list-item-primary">{{data.properties.Naam}}</p>
+                    <p class="list-item-secondary">{{data.properties.Status}}</p>
+                </div>
             </div>
         </li>
     </ul>
@@ -21,42 +22,51 @@
 </script>
 
 <style scoped>
+    .list {
+        max-width: 33vw;
+        min-width: 25vw;
+        height: 100%;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .list-item {
+        list-style: none;
+        display: flex;
+        align-items: start;
+    }
+
+    .list-item-image {
+        /*width: 100%;*/
+        height: 100%;
+        padding-right: 1rem;
+    }
+
+    .list-item-info-wrapper {
+        border: 1px solid grey;
+        border-radius: 3px;
+        margin: 0.5rem;
+        padding: 0.5rem;
+        flex-grow: 1;
+        display: flex;
+    }
+
+    .list-item-info {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        align-items: flex-start;
+    }
+
+    .list-item-primary {
+        font-size: 1rem;
+        margin-bottom: 0.5rem;
+        word-break: break-all;
+    }
+
+    .list-item-secondary {
+        font-size: 0.8rem;
+        margin-bottom: 0;
+        word-break: break-all;
+    }
 </style>
-
-
-<!--<div class="ui items">-->
-    <!--<div class="item">-->
-        <!--<div class="image">-->
-            <!--<img src="/images/wireframe/image.png">-->
-        <!--</div>-->
-        <!--<div class="content">-->
-            <!--<a class="header">Header</a>-->
-            <!--<div class="meta">-->
-                <!--<span>Description</span>-->
-            <!--</div>-->
-            <!--<div class="description">-->
-                <!--<p></p>-->
-            <!--</div>-->
-            <!--<div class="extra">-->
-                <!--Additional Details-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-    <!--<div class="item">-->
-        <!--<div class="image">-->
-            <!--<img src="/images/wireframe/image.png">-->
-        <!--</div>-->
-        <!--<div class="content">-->
-            <!--<a class="header">Header</a>-->
-            <!--<div class="meta">-->
-                <!--<span>Description</span>-->
-            <!--</div>-->
-            <!--<div class="description">-->
-                <!--<p></p>-->
-            <!--</div>-->
-            <!--<div class="extra">-->
-                <!--Additional Details-->
-            <!--</div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</div>-->
