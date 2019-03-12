@@ -1,6 +1,5 @@
 <template>
     <div id="app">
-        <img alt="Vue logo" src="./assets/images/logo.png">
         <GoogleMap name="example"></GoogleMap>
         <ShowAllMonumentaalGroenData></ShowAllMonumentaalGroenData>
     </div>
