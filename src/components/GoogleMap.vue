@@ -1,8 +1,15 @@
 <template>
-    <div>
-        <button v-on:click="this.toggleMapVisibility">Show Map</button>
-        <button v-on:click="this.showMarkers">Show Trees</button>
-        <div v-show="this.mapVisible" class="google-map" v-bind:id="mapName"></div>
+    <div class="google-map-wrapper">
+        <div class="map-buttons">
+            <button v-on:click="this.showMap" v-show="!this.showTressButtonVisible">Show Map</button>
+            <button v-on:click="this.showMarkers"
+                    v-show="this.showTressButtonVisible"
+                    class="map-button">Show Trees
+            </button>
+        </div>
+        <div v-show="this.mapVisible"
+             v-bind:id="mapName"
+             class="google-map"></div>
     </div>
 </template>
 
@@ -15,33 +22,44 @@
         data() {
             return {
                 mapName: this.name + "-map",
-                mapVisible: false
+                mapVisible: false,
+                showTressButtonVisible: false
             }
         },
         created() {
             let script = document.createElement('script');
+
             script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB1JByjXXnbrGvZYMYoIrPEXlk0qvdjUhM';
+            script.async = true;
+            script.defer = true;
             document.body.appendChild(script);
 
             this.data = WANDKUST_JSON.features;
         },
         methods: {
-            toggleMapVisibility() {
-                this.mapVisible = !this.mapVisible;
-
+            showMap() {
                 if (!this.map) {
+                    // UX IMPROVEMENT
+                    // add spinner?loader? anything that lets the user know the system is waiting
+                    // for a response/computing/etc
                     this.initMap();
                 }
-            },
-            initMap() {
-                const element = document.getElementById(this.mapName);
-                const options = {
-                    zoom: 12,
-                    center: new google.maps.LatLng(52.370216, 4.895168)
-                };
-                this.map = new google.maps.Map(element, options);
 
                 this.mapVisible = true;
+                this.showTressButtonVisible = true;
+            },
+            initMap() {
+                if (false) {
+                    setTimeout(this.initMap, 500);
+                } else {
+                    const element = document.getElementById(this.mapName);
+                    const options = {
+                        zoom: 12,
+                        center: new google.maps.LatLng(52.370216, 4.895168)
+                    };
+
+                    this.map = new google.maps.Map(element, options);
+                }
             },
             showMarkers() {
                 this.data.forEach(location => {
@@ -63,11 +81,32 @@
 </script>
 
 <style scoped>
+    .google-map-wrapper {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+    }
+
     .google-map {
         width: 100vw;
-        max-width: 1000px;
-        height: 80vh;
         margin: 0 auto;
         background: gray;
+    }
+
+    .map-buttons {
+        display: flex;
+    }
+
+    .map-button {
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        background: black;
+        color: whitesmoke;
+        height: 40px;
+        padding: 0 1rem;
+        border-radius: 2px;
+        left: 50%;
+        border: 1px solid grey;
     }
 </style>
