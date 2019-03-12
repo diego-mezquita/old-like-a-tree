@@ -32,6 +32,7 @@
         overflow: auto;
         height: inherit;
         padding: 0 0.5rem 0 0;
+        display: none;
     }
 
     .list-item {

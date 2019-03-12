@@ -1,7 +1,7 @@
 <template>
     <div id="app">
-        <GoogleMap name="example"></GoogleMap>
         <ShowAllMonumentaalGroenData></ShowAllMonumentaalGroenData>
+        <GoogleMap name="example"></GoogleMap>
     </div>
 </template>
 
@@ -28,5 +28,6 @@
         height: 100vh;
         width: 100vw;
         overflow: hidden;
+        display: flex;
     }
 </style>

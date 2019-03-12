@@ -1,8 +1,15 @@
 <template>
-    <div>
-        <button v-on:click="this.toggleMapVisibility">Show Map</button>
-        <button v-on:click="this.showMarkers">Show Trees</button>
-        <div v-show="this.mapVisible" class="google-map" v-bind:id="mapName"></div>
+    <div class="google-map-wrapper">
+        <div class="map-buttons">
+            <button v-on:click="this.toggleMapVisibility" v-show="!this.showTressButtonVisible">Show Map</button>
+            <button v-on:click="this.showMarkers"
+                    v-show="this.showTressButtonVisible"
+                    class="map-button">Show Trees
+            </button>
+        </div>
+        <div v-show="this.mapVisible"
+             v-bind:id="mapName"
+             class="google-map"></div>
     </div>
 </template>
 
@@ -15,7 +22,8 @@
         data() {
             return {
                 mapName: this.name + "-map",
-                mapVisible: false
+                mapVisible: false,
+                showTressButtonVisible: false
             }
         },
         created() {
@@ -32,6 +40,8 @@
                 if (!this.map) {
                     this.initMap();
                 }
+
+                this.showTressButtonVisible = true;
             },
             initMap() {
                 const element = document.getElementById(this.mapName);
@@ -63,11 +73,32 @@
 </script>
 
 <style scoped>
+    .google-map-wrapper {
+        flex-grow: 1;
+        display: flex;
+        justify-content: center;
+    }
+
     .google-map {
         width: 100vw;
-        max-width: 1000px;
-        height: 80vh;
         margin: 0 auto;
         background: gray;
+    }
+
+    .map-buttons {
+        display: flex;
+    }
+
+    .map-button {
+        position: absolute;
+        z-index: 1;
+        top: 10px;
+        background: black;
+        color: whitesmoke;
+        height: 40px;
+        padding: 0 1rem;
+        border-radius: 2px;
+        left: 50%;
+        border: 1px solid grey;
     }
 </style>
