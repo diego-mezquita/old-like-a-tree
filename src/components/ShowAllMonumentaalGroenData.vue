@@ -15,6 +15,8 @@
 <script>
     import MONUMEMNTAAL_GROEN_JSON from '../assets/data/monumentaal-groen.json'
 
+    console.log(MONUMEMNTAAL_GROEN_JSON);
+
     export default {
         name: "ShowAllMonumentaalGroenData",
         monumentaalGroenData: MONUMEMNTAAL_GROEN_JSON
@@ -25,15 +27,18 @@
     .list {
         max-width: 33vw;
         min-width: 25vw;
-        height: 100%;
         display: flex;
         flex-direction: column;
+        overflow: auto;
+        height: inherit;
+        padding: 0 0.5rem 0 0;
     }
 
     .list-item {
         list-style: none;
         display: flex;
         align-items: start;
+        flex-shrink: 0;
     }
 
     .list-item-image {
