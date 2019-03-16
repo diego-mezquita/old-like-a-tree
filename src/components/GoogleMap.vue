@@ -1,9 +1,8 @@
 <template>
     <div class="google-map-wrapper">
         <div class="map-buttons">
-            <button v-on:click="this.showMap" v-show="!this.showTressButtonVisible">Show Map</button>
+            <!--<button v-on:click="this.showMap" v-show="!this.showTressButtonVisible">Show Map</button>-->
             <button v-on:click="this.showMarkers"
-                    v-show="this.showTressButtonVisible"
                     class="map-button">Show Trees
             </button>
         </div>
@@ -27,14 +26,10 @@
             }
         },
         created() {
-            let script = document.createElement('script');
-
-            script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB1JByjXXnbrGvZYMYoIrPEXlk0qvdjUhM';
-            script.async = true;
-            script.defer = true;
-            document.body.appendChild(script);
-
             this.data = WANDKUST_JSON.features;
+        },
+        mounted() {
+          this.showMap();
         },
         methods: {
             showMap() {
@@ -49,8 +44,8 @@
                 this.showTressButtonVisible = true;
             },
             initMap() {
-                if (false) {
-                    setTimeout(this.initMap, 500);
+                if (!google) {
+                    setTimeout(this.initMap, 100);
                 } else {
                     const element = document.getElementById(this.mapName);
                     const options = {
@@ -69,7 +64,7 @@
                     const mapSettings = {
                         position: new google.maps.LatLng(lat, lng),
                         map: this.map
-                    }
+                    };
 
                     const marker = new google.maps.Marker(mapSettings);
                 });
