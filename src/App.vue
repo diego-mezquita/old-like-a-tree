@@ -5,12 +5,14 @@
 </template>
 
 <script>
+import key from './assets/secrets/google-map-api-key';
+
 export default {
   name: 'App',
   created() {
     let script = document.createElement('script');
 
-    script.src = 'https://maps.googleapis.com/maps/api/js?key=AIzaSyB1JByjXXnbrGvZYMYoIrPEXlk0qvdjUhM';
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${key.key}`;
     script.async = true;
     script.defer = true;
     document.body.appendChild(script);
