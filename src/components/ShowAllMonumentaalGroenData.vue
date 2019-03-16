@@ -15,8 +15,6 @@
 <script>
     import MONUMEMNTAAL_GROEN_JSON from '../assets/data/monumentaal-groen.json'
 
-    console.log(MONUMEMNTAAL_GROEN_JSON);
-
     export default {
         name: "ShowAllMonumentaalGroenData",
         monumentaalGroenData: MONUMEMNTAAL_GROEN_JSON
